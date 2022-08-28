@@ -9,6 +9,7 @@ class AdminFilter(BoundFilter):
     key = 'is_admin'
 
     def __init__(self, is_admin: typing.Optional[bool] = None):
+        super().__init__()
         self.is_admin = is_admin
 
     async def check(self, obj):
