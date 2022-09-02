@@ -13,14 +13,14 @@ from tgbot.handlers.private.user import register_user_private
 from tgbot.handlers.error.error_handler import register_error_handler
 
 from tgbot.middlewares.environment import EnvironmentMiddleware
-from tgbot.middlewares.big_brother import BigBrother
+from tgbot.middlewares.throttling import ThrottlingMiddleware
 
 logger = logging.getLogger(__name__)
 
 
 def register_all_middlewares(dp: Dispatcher, config: Config):
     dp.setup_middleware(EnvironmentMiddleware(config=config))
-    dp.setup_middleware(BigBrother(config=config))
+    dp.setup_middleware(ThrottlingMiddleware())
 
 
 def register_all_filters(dp: Dispatcher):

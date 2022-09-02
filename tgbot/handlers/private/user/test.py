@@ -3,9 +3,11 @@ from aiogram.types import Message, ChatType
 from aiogram.utils.markdown import hcode
 from tgbot.states.test import Test
 from aiogram.dispatcher import FSMContext
+from tgbot.misc.throttling import rate_limit
 
 
-async def user_test(message: Message):
+@rate_limit(3)
+async def user_test(message: Message, state: FSMContext = None):
     await message.answer('Вы начали тестирование.\n\
 Вопрос №1. \n\n\
 Вы часто не спите по ночам?')

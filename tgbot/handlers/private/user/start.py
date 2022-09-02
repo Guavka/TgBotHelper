@@ -2,9 +2,11 @@ from aiogram.dispatcher.filters import CommandStart
 from aiogram.types import Message, ChatType
 from aiogram import Dispatcher
 from aiogram.utils.deep_linking import decode_payload
+from tgbot.misc.throttling import rate_limit
 import re
 
 
+@rate_limit(3)
 async def user_start(message: Message):
     await message.answer(f"Hello, {message.chat.first_name}!")
 
